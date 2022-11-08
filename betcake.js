@@ -43,3 +43,4 @@ async function betBull(){
 
 betBear()
 betBull()
+console.log("Bot started...")
