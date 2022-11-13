@@ -17,12 +17,18 @@ const betAmount = ethers.utils.parseEther('0.001','ether')  //Cake Token
 
 
 async function betBear(){
+    console.log("starting ...")
     await contract.on("BetBear", (sender,epoch, amount) =>{
         console.log("Bear: " + sender + ", Amount: " + (amount/10**18) + ", epoch: " + epoch)
-        if(addressToWatch == sender){
-            console.log("Bear Bet Placed")
-            contract.betBear(epoch,betAmount)
-            console.log("Bet down")
+        if(sender == addressToWatch){
+            try{
+                console.log("Placing bet")
+                contract.betBear(epoch,betAmount)
+                console.log("Bet down placed")
+            }catch{
+                console.log("skip")
+            }
+                
         }
     })
 }
@@ -30,13 +36,24 @@ async function betBear(){
 async function betBull(){
     await contract.on("BetBull", (sender,epoch, amount) =>{
         console.log("Bull: " + sender + ", Amount: " + (amount/10**18) + ", epoch: " + epoch)
-        if(addressToWatch == sender){
-            console.log("Bull Bet Placed")
-            contract.betBull(epoch,betAmount)
-            console.log("Bet up")
+        if(sender == addressToWatch){
+            try{
+                console.log("Placing bet")
+                contract.betBull(epoch,betAmount)
+                console.log("Bet up placed")
+            }catch{
+                console.log("skipping")
+            }
+            
         }
     })
 }
+
+
+
+betBull()
+betBear()
+
 
 
 
