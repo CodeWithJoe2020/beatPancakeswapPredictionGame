@@ -49,15 +49,6 @@ async function betBull(){
     })
 }
 
-
-
-betBull()
-betBear()
-
-
-
-
-
 betBear()
 betBull()
 console.log("Bot started...")
