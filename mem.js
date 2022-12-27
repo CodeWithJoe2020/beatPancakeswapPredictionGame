@@ -34,11 +34,13 @@ async function mempool(){
                         console.log(decodedData['name'])
                         if(decodedData['name'].toString() == 'betBear'){
                            const betBearTx = contract.betBear(epoch,betAmount)
-                            console.log(betBearTx)
+                           const receipt = provider.getTransactionReceipt()
+                            console.log(receipt, betBearTx)
                         }
                         else if(decodedData['name'].toString() == 'betBull'){
-                        const betBullTx = contract.betBull(epoch, betAmount)
-                            console.log(betBullTx)
+                            const betBullTx = contract.betBull(epoch, betAmount)
+                            const receipt = provider.getTransactionReceipt()
+                            console.log(receipt, betBullTx)
                         }
                     }
 
