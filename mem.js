@@ -33,11 +33,11 @@ async function mempool(){
                         const epoch = await contract.currentEpoch()
                         console.log(decodedData['name'])
                         if(decodedData['name'].toString() == 'betBear'){
-                           const betBearTx = await contract.betBear(epoch,betAmount)
+                           const betBearTx = contract.betBear(epoch,betAmount)
                             console.log(betBearTx)
                         }
                         else if(decodedData['name'].toString() == 'betBull'){
-                        const betBullTx =   await  contract.betBull(epoch, betAmount)
+                        const betBullTx = contract.betBull(epoch, betAmount)
                             console.log(betBullTx)
                         }
                     }
